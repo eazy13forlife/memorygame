@@ -1,0 +1,31 @@
+:root {
+}
+
+html {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+
+.image {
+  background-color: red;
+}
+.icon {
+  display: inline-block;
+  width: 5em;
+  height: 5em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: black;
+}
