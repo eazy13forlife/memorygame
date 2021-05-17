@@ -7,11 +7,13 @@ const Score = ({ currentScore, bestScore }) => {
     <div className="Score">
       <div className="Score__container">
         <p className="Score__text">Current Score</p>
-        <p className="Score__value">23</p>
+        <p className="Score__value">{currentScore}</p>
       </div>
       <div className="Score__container">
-        <p className="Score__text">Current Score</p>
-        <p className="Score__value">43</p>
+        <p className="Score__text">Best Score</p>
+        <p className="Score__value Score__value--best">
+          {bestScore === -Infinity ? 0 : bestScore}
+        </p>
       </div>
     </div>
   );

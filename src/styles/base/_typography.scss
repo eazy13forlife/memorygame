@@ -1,6 +1,9 @@
 .primary-heading {
   font-size: 4.5rem;
   text-transform: capitalize;
+  &--red {
+    color: red;
+  }
 }
 .primary-sub-heading {
   font-size: 3rem;

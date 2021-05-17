@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+
 import images from "../../images/";
+import returnRandomizedArray from "../../cardfunctions.js";
 
 import Header from "../Header/Header.js";
 import Score from "../Score/Score.js";
 import PicturesContainer from "../PicturesContainer/PicturesContainer.js";
+import Modal from "../Modal/Modal.js";
 
 const picturesArray = [
   {
@@ -72,15 +75,46 @@ const picturesArray = [
   },
 ];
 
-console.log(picturesArray);
 const App = () => {
   const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(Infinity);
+  const [bestScore, setBestScore] = useState(-Infinity);
+  const [pictures, setPictures] = useState(picturesArray);
+  const [picks, setPicks] = useState([]); //the cards the user has selected
+  const [winStatus, setWinStatus] = useState(null); //if false(user loses) a modal pops up saying the user has lost,
+
+  const onPictureClick = (name) => {
+    //if picks array includes the name of team user clicked
+    if (picks.includes(name)) {
+      setWinStatus(false); //set win status to false, so modal pops up saying user has lost
+    } else {
+      setPicks([...picks, name]); //include this pick in the picks array so we know not to click it again
+      const incrementedScore = currentScore + 1;
+      setCurrentScore(incrementedScore); //increase current Score
+      setBestScore(Math.max(incrementedScore, bestScore)); //recalculate new best score
+    }
+
+    setPictures(returnRandomizedArray(pictures));
+  };
+
+  const onModalClick = () => {
+    setCurrentScore(0); //reset current score to 0
+    setPicks([]); //clear out our picks array
+    //we need to setWinStatus to null when game resets after user clicks out of modal
+    setWinStatus(null);
+  };
+
   return (
     <div className="App">
       <Header />
-      <Score />
-      <PicturesContainer pictures={picturesArray} />
+      <Score currentScore={currentScore} bestScore={bestScore} />
+      <PicturesContainer pictures={pictures} onPictureClick={onPictureClick} />
+      {winStatus === false && (
+        <Modal
+          currentScore={currentScore}
+          bestScore={bestScore}
+          onModalClick={onModalClick}
+        />
+      )}
     </div>
   );
 };

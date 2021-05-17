@@ -10,4 +10,12 @@
     border-bottom: 1px solid var(--color-secondary);
     margin-bottom: 1rem;
   }
+  &__value {
+    font-size: 4rem;
+    margin-top: -1rem;
+    font-weight: 500;
+    &--best {
+      color: yellow;
+    }
+  }
 }

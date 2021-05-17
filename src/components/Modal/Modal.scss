@@ -1,0 +1,19 @@
+.Modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__content {
+    text-align: center;
+    animation: fadeIn 100ms 550ms both;
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+  animation: zoomIn 600ms;
+}

@@ -5,6 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 100ms;
+  cursor: pointer;
+  &:hover {
+    border: 3px solid yellow;
+  }
   &--nuggets {
     background-color: #4b90cd;
   }
