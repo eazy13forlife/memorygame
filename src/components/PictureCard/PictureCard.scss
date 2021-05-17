@@ -1,0 +1,60 @@
+.PictureCard {
+  background-color: red;
+  border-radius: 1.2rem;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--nuggets {
+    background-color: #4b90cd;
+  }
+  &--magic {
+    background-image: linear-gradient(to bottom, #10a1ff, #063561);
+  }
+  &--nets {
+    background-image: linear-gradient(to bottom, #443a3a, #ffffff);
+  }
+  &--mavericks {
+    background-image: linear-gradient(to bottom, #c4ced4, #1061ac);
+  }
+  &--bulls {
+    background-image: linear-gradient(to bottom, #ff1b1b, #c9062c);
+  }
+  &--cavaliers {
+    background-color: #860038;
+  }
+  &--pacers {
+    background-image: linear-gradient(to bottom, #002d62, #0660cb);
+  }
+  &--rockets {
+    background-color: #e1e1e1;
+  }
+  &--warriors {
+    background-color: white;
+  }
+  &--lakers {
+    background-image: linear-gradient(to bottom, #fdb827, white 65%, white);
+  }
+  &--clippers {
+    background-image: linear-gradient(to bottom, #d0103c, white);
+  }
+  &--heat {
+    background-image: linear-gradient(to bottom, #000000, white 50%, #bf2f38);
+  }
+  &--thunder {
+    background-image: linear-gradient(to bottom, #4b90cd, #0c3d6a);
+  }
+  &--hornets {
+    background-image: linear-gradient(to bottom, #352b71, #2a0be9);
+  }
+  &--spurs {
+    background-image: linear-gradient(to bottom, #0a1b23, #c4ced4);
+  }
+  &--trailblazers {
+    background-image: linear-gradient(to bottom, #c4ced4, white);
+  }
+
+  &__image {
+    width: 100%;
+  }
+}

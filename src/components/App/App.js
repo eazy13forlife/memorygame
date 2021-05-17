@@ -1,29 +1,87 @@
-import React from "react";
-import bin from "../../images/bin.svg";
+import React, { useState } from "react";
+import images from "../../images/";
+
+import Header from "../Header/Header.js";
+import Score from "../Score/Score.js";
+import PicturesContainer from "../PicturesContainer/PicturesContainer.js";
+
+const picturesArray = [
+  {
+    name: "nuggets",
+    img: images.nuggets,
+  },
+  {
+    name: "magic",
+    img: images.magic,
+  },
+  {
+    name: "nets",
+    img: images.nets,
+  },
+  {
+    name: "mavericks",
+    img: images.mavericks,
+  },
+  {
+    name: "bulls",
+    img: images.bulls,
+  },
+  {
+    name: "cavaliers",
+    img: images.cavaliers,
+  },
+  {
+    name: "pacers",
+    img: images.pacers,
+  },
+  {
+    name: "rockets",
+    img: images.rockets,
+  },
+  {
+    name: "warriors",
+    img: images.warriors,
+  },
+  {
+    name: "lakers",
+    img: images.lakers,
+  },
+  {
+    name: "clippers",
+    img: images.clippers,
+  },
+  {
+    name: "heat",
+    img: images.heat,
+  },
+  {
+    name: "thunder",
+    img: images.thunder,
+  },
+  {
+    name: "hornets",
+    img: images.hornets,
+  },
+  {
+    name: "spurs",
+    img: images.spurs,
+  },
+  {
+    name: "trailblazers",
+    img: images.trailblazers,
+  },
+];
+
+console.log(picturesArray);
 const App = () => {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(Infinity);
   return (
-    <svg
-      aria-hidden="true"
-      version="1.1"
-      width="320px"
-      height="320px"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      className="icon image"
-    >
-      <defs>
-        <symbol id="icon-bin" viewBox="0 0 32px 32px">
-          <path
-            d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"
-            fill="black"
-          ></path>
-          <path
-            d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"
-            fill="black"
-          ></path>
-        </symbol>
-      </defs>
-    </svg>
+    <div className="App">
+      <Header />
+      <Score />
+      <PicturesContainer pictures={picturesArray} />
+    </div>
   );
 };
 

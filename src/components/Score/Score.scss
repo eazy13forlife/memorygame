@@ -1,0 +1,13 @@
+.Score {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 0rem;
+  &__container {
+    text-align: center;
+  }
+  &__text {
+    padding-bottom: 0.1rem;
+    border-bottom: 1px solid var(--color-secondary);
+    margin-bottom: 1rem;
+  }
+}
