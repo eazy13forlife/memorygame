@@ -82,18 +82,17 @@ const App = () => {
   const [picks, setPicks] = useState([]); //the cards the user has selected
   const [winStatus, setWinStatus] = useState(null); //if false(user loses) a modal pops up saying the user has lost,
 
-  const onPictureClick = (name) => {
+  const onPictureClick = (name, image) => {
     //if picks array includes the name of team user clicked
     if (picks.includes(name)) {
-      setWinStatus(false); //set win status to false, so modal pops up saying user has lost
+      setWinStatus({ status: false, chosen: name, image: image }); //set win status to false, so modal pops up saying user has lost
     } else {
       setPicks([...picks, name]); //include this pick in the picks array so we know not to click it again
       const incrementedScore = currentScore + 1;
       setCurrentScore(incrementedScore); //increase current Score
       setBestScore(Math.max(incrementedScore, bestScore)); //recalculate new best score
+      setPictures(returnRandomizedArray(pictures));
     }
-
-    setPictures(returnRandomizedArray(pictures));
   };
 
   const onModalClick = () => {
@@ -101,6 +100,7 @@ const App = () => {
     setPicks([]); //clear out our picks array
     //we need to setWinStatus to null when game resets after user clicks out of modal
     setWinStatus(null);
+    setPictures(returnRandomizedArray(pictures));
   };
 
   return (
@@ -108,11 +108,13 @@ const App = () => {
       <Header />
       <Score currentScore={currentScore} bestScore={bestScore} />
       <PicturesContainer pictures={pictures} onPictureClick={onPictureClick} />
-      {winStatus === false && (
+      {winStatus && winStatus.status === false && (
         <Modal
           currentScore={currentScore}
           bestScore={bestScore}
           onModalClick={onModalClick}
+          name={winStatus.chosen}
+          image={winStatus.image}
         />
       )}
     </div>
