@@ -12,7 +12,10 @@ const Header = () => {
       <div className="Header__rules">
         <p className="Header__rule1">1. You get a point for choosing a card.</p>
         <p className="Header__rule2">
-          2.If you click the same card more than once, you lose.
+          2. If you click the same card more than once, you lose.
+        </p>
+        <p className="Header__rule2">
+          3. You only have 5 seconds to choose a card.
         </p>
       </div>
     </div>

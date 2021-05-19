@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-/*
-our component re-rendered but the useEffect just gets called once after it mounts, so it will keep the initial currentTime value even if setTimer is called and currentTime updated because that useEffect uses the inital value of currentTime before any updating occured and it continues to use that because it is only rendered one time. This is why i put a time variable outside everything because when that changes, we all know
-*/
-
 let intervalId;
 
 const Timer = ({
