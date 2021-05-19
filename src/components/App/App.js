@@ -76,6 +76,21 @@ const picturesArray = [
   },
 ];
 let timer = 5;
+const dog = 5;
+
+const changeDog = (dog) => {
+  const mello = () => {
+    dog -= 1;
+    return dog;
+  };
+  const jello = () => {
+    dog += 3;
+    return dog;
+  };
+  mello();
+  return jello();
+};
+console.log(changeDog(dog));
 
 const App = () => {
   const [currentScore, setCurrentScore] = useState(0);
@@ -136,7 +151,7 @@ const App = () => {
         />
       ) : null}
       <Timer
-        time={timer}
+        startingTime={5}
         onTimerEnd={onTimerEnd}
         resetTimer={resetTimer}
         setResetTimer={setResetTimer}

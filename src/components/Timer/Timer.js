@@ -1,53 +1,49 @@
 import React, { useState, useEffect } from "react";
 
 /*
-our component re-rendered but the useEffect just gets called once after it mounts, so it will keep the initial timer value even if setTimer is called and timer updated because that useEffect uses the inital value of timer before any updating occured and it continues to use that because it is only rendered one time. This is why i put a time variable outside everything because when that changes, we all know
+our component re-rendered but the useEffect just gets called once after it mounts, so it will keep the initial currentTime value even if setTimer is called and currentTime updated because that useEffect uses the inital value of currentTime before any updating occured and it continues to use that because it is only rendered one time. This is why i put a time variable outside everything because when that changes, we all know
 */
 
-let initialTimer;
+let intervalId;
 
-const Timer = ({ time, onTimerEnd, resetTimer, setResetTimer }) => {
-  const [timer, setTimer] = useState(time);
+const Timer = ({ startingTime, onTimerEnd, resetTimer, setResetTimer }) => {
+  const [currentTime, setCurrentTime] = useState(startingTime);
 
   useEffect(() => {
-    if (resetTimer) {
-      clearInterval(initialTimer);
-      setTimer(5);
-      setResetTimer(false);
-    }
-
-    initialTimer = setInterval(() => {
-      if (time !== 0) {
-        time -= 1;
-        setTimer(time);
+    let time1 = startingTime;
+    intervalId = setInterval(() => {
+      if (time1 !== 0) {
+        time1 -= 1;
+        setCurrentTime(time1);
       } else {
-        clearInterval(initialTimer);
+        clearInterval(intervalId);
       }
     }, 1000);
-  }, [resetTimer]); //if resetTimer is true, we set current timer to 5 seconds again and then immediately set it to false after setting new timer, so our app knows.Then we create countdown interval again.
-  /*
+  }, []); //if resetTimer is true, we set current currentTime to 5 seconds again and then immediately set it to false after setting new currentTime, so our app knows.Then we create countdown interval again.
+
   useEffect(() => {
     if (resetTimer) {
-      clearInterval(initialTimer);
-      setTimer(5);
+      let time1 = startingTime;
+      clearInterval(intervalId);
+      setCurrentTime(startingTime);
       setResetTimer(false);
-      initialTimer = setInterval(() => {
-        if (time !== 0) {
-          time -= 1;
-          setTimer(time);
+      intervalId = setInterval(() => {
+        if (time1 !== 0) {
+          time1 -= 1;
+          setCurrentTime(time1);
         } else {
-          clearInterval(initialTimer);
+          clearInterval(intervalId);
         }
       }, 1000);
     }
   }, [resetTimer]);
-*/
-  useEffect(() => {
-    if (timer === 0) {
-      onTimerEnd(); //when timer hits 0, call onTimerEnd property passed from App comp
-    }
-  }, [timer]);
 
-  return <p>{timer}</p>;
+  useEffect(() => {
+    if (currentTime === 0) {
+      onTimerEnd(); //when currentTime hits 0, call onTimerEnd property passed from App comp
+    }
+  }, [currentTime]);
+
+  return <p>{currentTime}</p>;
 };
 export default Timer;
