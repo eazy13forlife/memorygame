@@ -9,6 +9,8 @@ import PicturesContainer from "../PicturesContainer/PicturesContainer.js";
 import Modal from "../Modal/Modal.js";
 import Timer from "../Timer/Timer.js";
 
+import "./App.scss";
+
 const picturesArray = [
   {
     name: "nuggets",
@@ -100,11 +102,13 @@ const App = () => {
   const [winStatus, setWinStatus] = useState(null); //if false(user loses) a modal pops up saying the user has lost,
   const [isTimerUp, setIsTimerUp] = useState(false); //lets us know if timer is up so we know what to render
   const [resetTimer, setResetTimer] = useState(false); //function to reset the timer
+  const [stopTimer, setStopTimer] = useState(false);
 
   const onPictureClick = (name, image) => {
     //if picks array includes the name of team user clicked
     if (picks.includes(name)) {
       setWinStatus({ status: false, chosen: name, image: image }); //set win status to false, so modal pops up saying user has lost
+      setStopTimer(true);
     } else {
       setPicks([...picks, name]); //include this pick in the picks array so we know not to click it again
       const incrementedScore = currentScore + 1;
@@ -123,6 +127,7 @@ const App = () => {
     //we need to setWinStatus to null when game resets after user clicks out of modal
     setWinStatus(null);
     setPictures(returnRandomizedArray(pictures));
+    setStopTimer(false);
   };
 
   const onTimerEnd = () => {
@@ -139,6 +144,13 @@ const App = () => {
     <div className="App">
       <Header />
       <Score currentScore={currentScore} bestScore={bestScore} />
+      <Timer
+        startingTime={5}
+        onTimerEnd={onTimerEnd}
+        resetTimer={resetTimer}
+        setResetTimer={setResetTimer}
+        stopTimer={stopTimer}
+      />
       <PicturesContainer pictures={pictures} onPictureClick={onPictureClick} />
       {(winStatus && winStatus.status === false) || isTimerUp ? (
         <Modal
@@ -150,12 +162,6 @@ const App = () => {
           isTimerUp={isTimerUp}
         />
       ) : null}
-      <Timer
-        startingTime={5}
-        onTimerEnd={onTimerEnd}
-        resetTimer={resetTimer}
-        setResetTimer={setResetTimer}
-      />
     </div>
   );
 };
