@@ -15,9 +15,11 @@
   justify-content: center;
   align-items: center;
   @include respondMax(500px) {
+    position: fixed;
     width: 4rem;
     height: 4rem;
     font-size: 3.5rem;
-    left: 53%;
+    left: 3rem;
+    top: 10rem;
   }
 }

@@ -9,6 +9,7 @@ const Timer = ({
   setResetTimer,
   stopTimer,
 }) => {
+  console.log("timer");
   const [currentTime, setCurrentTime] = useState(startingTime);
 
   //at initial load, start our timer countdown
