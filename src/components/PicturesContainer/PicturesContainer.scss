@@ -1,7 +1,21 @@
+@import "../../styles/abstracts/_mixins.scss";
+
 .PicturesContainer {
   display: grid;
   width: 100%;
   grid-gap: 2rem;
+  justify-content: center;
   grid-template-columns: repeat(6, 15%);
-  grid-template-rows: repeat(auto-fit, min-content);
+  @include respondMax(900px) {
+    grid-template-columns: repeat(5, 20%);
+  }
+  @include respondMax(700px) {
+    grid-template-columns: repeat(4, 20%);
+  }
+  @include respondMax(500px) {
+    grid-template-columns: repeat(3, 25%);
+  }
+  @include respondMax(400px) {
+    grid-template-columns: repeat(3, 25%);
+  }
 }

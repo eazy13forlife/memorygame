@@ -1,3 +1,4 @@
+@import "../../styles/abstracts/_mixins.scss";
 .App {
 }
 .Timer {
@@ -6,10 +7,17 @@
   border-radius: 5px;
   background-color: red;
   position: absolute;
-  left: 2rem;
-  top: 28rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20rem;
   font-size: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  @include respondMax(500px) {
+    width: 4rem;
+    height: 4rem;
+    font-size: 3.5rem;
+    left: 53%;
+  }
 }

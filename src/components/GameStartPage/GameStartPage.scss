@@ -1,0 +1,43 @@
+@import "../../styles/abstracts/_mixins.scss";
+
+.GameStartPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rem;
+  padding-top: 5rem;
+  h1 {
+    text-decoration: underline;
+    @include respondMax(700px) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__item {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .button {
+    border-radius: 5px;
+    border: none;
+    font-size: 3rem;
+    padding: 1.5rem 2rem;
+    color: currentColor;
+    background-color: green;
+    justify-self: center;
+    margin-top: 3rem;
+    &:hover {
+      background-color: #155c06;
+    }
+    &:active {
+      transform: translateY(0.2rem);
+    }
+  }
+}

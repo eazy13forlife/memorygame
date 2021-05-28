@@ -8,6 +8,7 @@ import Score from "../Score/Score.js";
 import PicturesContainer from "../PicturesContainer/PicturesContainer.js";
 import Modal from "../Modal/Modal.js";
 import Timer from "../Timer/Timer.js";
+import GameStartPage from "../GameStartPage/GameStartPage.js";
 
 import "./App.scss";
 
@@ -77,24 +78,9 @@ const picturesArray = [
     img: images.trailblazers,
   },
 ];
-let timer = 5;
-const dog = 5;
-
-const changeDog = (dog) => {
-  const mello = () => {
-    dog -= 1;
-    return dog;
-  };
-  const jello = () => {
-    dog += 3;
-    return dog;
-  };
-  mello();
-  return jello();
-};
-console.log(changeDog(dog));
 
 const App = () => {
+  const [gameStart, setGameStart] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(-Infinity);
   const [pictures, setPictures] = useState(picturesArray);
@@ -102,7 +88,7 @@ const App = () => {
   const [winStatus, setWinStatus] = useState(null); //if false(user loses) a modal pops up saying the user has lost,
   const [isTimerUp, setIsTimerUp] = useState(false); //lets us know if timer is up so we know what to render
   const [resetTimer, setResetTimer] = useState(false); //function to reset the timer
-  const [stopTimer, setStopTimer] = useState(false);
+  const [stopTimer, setStopTimer] = useState(true);
 
   const onPictureClick = (name, image) => {
     //if picks array includes the name of team user clicked
@@ -140,8 +126,17 @@ const App = () => {
     });
   };
 
+  const onStartGame = () => {
+    setGameStart(true);
+    setTimeout(() => {
+      setResetTimer(true);
+    }, 1500);
+  };
+
   return (
     <div className="App">
+      <GameStartPage onStartGame={onStartGame} gameStart={gameStart} />
+
       <Header />
       <Score currentScore={currentScore} bestScore={bestScore} />
       <Timer

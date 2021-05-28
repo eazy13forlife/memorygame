@@ -1,7 +1,15 @@
+@import "../../styles/abstracts/_mixins.scss";
+
 .Score {
   display: flex;
   justify-content: space-between;
   padding: 3rem 0rem;
+  @include respondMax(500px) {
+    padding: 3rem 3rem;
+  }
+  @include respondMax(400px) {
+    font-size: 2rem;
+  }
   &__container {
     text-align: center;
   }
