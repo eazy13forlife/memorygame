@@ -80,6 +80,7 @@ const picturesArray = [
 ];
 
 const App = () => {
+  console.log("hey");
   const [gameStart, setGameStart] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(-Infinity);
@@ -130,7 +131,8 @@ const App = () => {
     setGameStart(true);
     setTimeout(() => {
       setResetTimer(true);
-    }, 1500);
+    }, 1000);
+    setStopTimer(false);
   };
 
   return (
