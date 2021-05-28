@@ -130,7 +130,7 @@ const App = () => {
     setGameStart(true);
     setTimeout(() => {
       setResetTimer(true);
-    }, 1000);
+    }, 900);
     setStopTimer(false);
   };
 

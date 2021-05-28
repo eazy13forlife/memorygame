@@ -7,7 +7,7 @@ const GameStartPage = ({ onStartGame, gameStart }) => {
       className="GameStartPage"
       style={
         gameStart
-          ? { animation: "slideUp 1500ms forwards" }
+          ? { animation: "slideUp 5500ms forwards" }
           : { animation: "none" }
       }
     >
