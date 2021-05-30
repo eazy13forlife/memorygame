@@ -9,10 +9,9 @@ const Timer = ({
   setResetTimer,
   stopTimer,
 }) => {
-  console.log("timer");
   const [currentTime, setCurrentTime] = useState(startingTime);
 
-  //at initial load, start our timer countdown
+  //at initial load, start our timer countdown.*have to include startingTime as dependency
   useEffect(() => {
     let time1 = startingTime;
     intervalId = setInterval(() => {
@@ -23,9 +22,9 @@ const Timer = ({
         clearInterval(intervalId);
       }
     }, 1000);
-  }, []);
+  }, [startingTime]);
 
-  //when resetTimer is set to true, reset our timer countdown
+  //when resetTimer is set to true, reset our timer countdown. have to include setResetTimer and startingTime as dependencies.
   useEffect(() => {
     if (resetTimer) {
       let time1 = startingTime;
@@ -41,7 +40,7 @@ const Timer = ({
         }
       }, 1000);
     }
-  }, [resetTimer]);
+  }, [resetTimer, setResetTimer, startingTime]);
 
   //when stopTimer is set to true, we want to stop the timer by clearing IntervalId
   useEffect(() => {
@@ -55,7 +54,7 @@ const Timer = ({
     if (currentTime === 0) {
       onTimerEnd();
     }
-  }, [currentTime]);
+  }, [currentTime, onTimerEnd]);
 
   return <p className="Timer">{currentTime}</p>;
 };

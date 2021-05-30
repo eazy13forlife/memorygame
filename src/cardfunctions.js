@@ -19,6 +19,8 @@ const pushRandomValue = (currentArray, resultArray) => {
   const newCurrentArray = currentArray.filter((item, index) => {
     if (item !== currentArrayValue) {
       return true;
+    } else {
+      return false;
     }
   });
   pushRandomValue(newCurrentArray, resultArray);

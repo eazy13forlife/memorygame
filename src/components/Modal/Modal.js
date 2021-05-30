@@ -1,7 +1,6 @@
 import React from "react";
-import "./Modal.scss";
 
-import { RiCloseCircleFill } from "react-icons/ri";
+import "./Modal.scss";
 
 const Modal = ({
   currentScore,
@@ -50,8 +49,13 @@ const Modal = ({
   return (
     <div className="Modal">
       <div className="Modal__content">
-        <RiCloseCircleFill className="Modal__icon" onClick={onModalClick} />
         {isTimerUp ? renderTimeUp() : renderUserLost()}
+        <button
+          onClick={onModalClick}
+          className="primary-button primary-button--green"
+        >
+          Play again
+        </button>
       </div>
     </div>
   );

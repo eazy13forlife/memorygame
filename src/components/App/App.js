@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import images from "../../images/";
 import returnRandomizedArray from "../../cardfunctions.js";
@@ -126,11 +126,16 @@ const App = () => {
     });
   };
 
+  const onTimerEndMemoize = useCallback(onTimerEnd, [
+    setIsTimerUp,
+    setWinStatus,
+  ]);
+
   const onStartGame = () => {
     setGameStart(true);
     setTimeout(() => {
       setResetTimer(true);
-    }, 900);
+    }, 600);
     setStopTimer(false);
   };
 
@@ -142,7 +147,7 @@ const App = () => {
       <Score currentScore={currentScore} bestScore={bestScore} />
       <Timer
         startingTime={5}
-        onTimerEnd={onTimerEnd}
+        onTimerEnd={onTimerEndMemoize}
         resetTimer={resetTimer}
         setResetTimer={setResetTimer}
         stopTimer={stopTimer}

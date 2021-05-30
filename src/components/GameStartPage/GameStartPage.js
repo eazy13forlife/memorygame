@@ -29,7 +29,10 @@ const GameStartPage = ({ onStartGame, gameStart }) => {
           </li>
         </ol>
 
-        <button className="button" onClick={onStartGame}>
+        <button
+          className="primary-button primary-button--green"
+          onClick={onStartGame}
+        >
           Start Game
         </button>
       </div>

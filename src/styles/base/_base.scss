@@ -36,3 +36,23 @@ body {
     padding: 2rem 2rem 5rem 2rem;
   }
 }
+
+.primary-button {
+  border-radius: 5px;
+  border: none;
+  font-size: 3rem;
+  padding: 1.5rem 2rem;
+  justify-self: center;
+  margin-top: 3rem;
+  text-transform: capitalize;
+  &--green {
+    background-color: green;
+    color: var(--color-secondary);
+    &:hover {
+      background-color: #155c06;
+    }
+  }
+  &:active {
+    transform: translateY(0.2rem);
+  }
+}
