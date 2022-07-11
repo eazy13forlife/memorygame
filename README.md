@@ -21,6 +21,6 @@ https://memorygame-two.vercel.app/
 * 5 second counter for added difficulty
 * NBA cards are reshuffled after every selection
 
-## Future implementations
+## Future Implementations
 * Multiple rounds with different teams. A user can elevate to a new round upon clicking all available teams for the first round.
 
